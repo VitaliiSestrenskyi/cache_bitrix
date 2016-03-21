@@ -22,4 +22,19 @@ if( !is_array($arrLinksFilter) ){
          $cache->EndDataCache(array("arrLinksFilter"=>$arrLinksFilter));
    }
 }
+
+
+
+/*Можно оперировать полученными переменными*/
+$cacheSmart = new CPHPCache();
+$cacheLifetime = 86400*7; $cacheID = 'arrLinksFilter10'; $cachePath = 'arIBlockListID';
+if( $cacheSmart->InitCache($cacheLifetime, $cacheID, $cachePath) )
+{
+   $vars = $cacheSmart->GetVars();
+   extract($vars);
+   // или же 
+   $arrLinksFilter = $vars['arrLinksFilter'];
+}
+
+
 ?>
